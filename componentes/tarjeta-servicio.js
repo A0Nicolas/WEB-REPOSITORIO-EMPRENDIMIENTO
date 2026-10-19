@@ -1,12 +1,42 @@
 const plantilla = document.createElement("template");
 plantilla.innerHTML = `
+<style>
+:host {
+    display: block;
+    background: white;
+    border: 2px solid var(--color-marca, gray);
+    border-radius: 10px;
+    overflow: hidden;
+}
+::slotted(img) {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.cuerpo {
+    padding: 12px;
+}
+::slotted(h3) {
+    margin: 0;
+    color: var(--color-marca, gray);
+}
+.extra {
+    color: #555;
+}
+.precio {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--color-marca, gray);
+}
+</style>
 <div class="foto"><slot name="foto"></slot></div>
 <div class="cuerpo">
     <slot name="nombre"></slot>
-    <p><slot>Sin descripción</slot></p>
+    <slot>Sin descripción</slot>
     <p class="extra"><span id="duracion">0</span> min</p>
     <p class="precio">\$<span id="valor">0</span></p>
 </div>
+
 `;
 
 export class TarjetaServicio extends HTMLElement {
