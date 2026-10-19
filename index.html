@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica de laboratorio · tarjeta-producto</title>
+  <link rel="stylesheet" href="./estilos.css">
+
+  <!-- PASO 1 · La página solo importa el módulo del componente.
+       Ábrela con Live Server: los módulos no cargan con file:// -->
+  <script type="module" src="./componentes/tarjeta-producto.js"></script>
+</head>
+<body>
+  <!-- Cambia el título por el nombre de tu emprendimiento -->
+  <h1>Nombre de tu emprendimiento</h1>
+
+  <!-- PASO 4 · Usa la tarjeta tres veces con productos REALES de tu emprendimiento:
+       cambia la foto, el nombre, la descripción y el precio de cada una. -->
+  <main class="producto">
+
+   <section>
+    <h2>Productos de Pastelería</h2>
+
+    <div class="productos">
+
+        <tarjeta-producto precio="25">
+            <img
+                slot="foto"
+                src="./img/pastel-cumpleanos.jpg"
+                alt="Pastel de cumpleaños">
+
+            <h3 slot="nombre">
+                Pastel de Cumpleaños
+            </h3>
+
+            <p>
+                Pastel personalizado para cumpleaños,
+                disponible en diferentes sabores y decoraciones.
+            </p>
+        </tarjeta-producto>
+
+
+        <tarjeta-producto precio="22">
+            <img
+                slot="foto"
+                src="./img/pastel-chocolate.jpg"
+                alt="Pastel de chocolate">
+
+            <h3 slot="nombre">
+                Pastel de Chocolate
+            </h3>
+
+            <p>
+                Pastel de chocolate con crema,
+                cobertura artesanal y decoración especial.
+            </p>
+        </tarjeta-producto>
+
+
+        <tarjeta-producto precio="28">
+            <img
+                slot="foto"
+                src="./img/pastel-frutos-rojos.jpg"
+                alt="Pastel de frutos rojos">
+
+            <h3 slot="nombre">
+                Pastel de Frutos Rojos
+            </h3>
+
+            <p>
+                Pastel suave acompañado de crema
+                y una selección de frutos rojos.
+            </p>
+        </tarjeta-producto>
+
+    </div>
+</section>
+  </main>
+</body>
+</html>
