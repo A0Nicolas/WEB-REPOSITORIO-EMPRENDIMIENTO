@@ -8,9 +8,9 @@ body {
   color: #1F2A24;
 }
 
-.producto {
+.catalogo {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   max-width: 900px;
 }
@@ -18,15 +18,5 @@ body {
 /* PASO 3 · Aquí la página le entrega al componente el color de tu marca.
    Cambia el valor por el color de tu emprendimiento. */
 tarjeta-producto {
-    --color-marca: #6f4e37;
-}
-
-tarjeta-estefano {
-    --color-marca: #b5446e;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  --color-marca: #2F6B45;
 }

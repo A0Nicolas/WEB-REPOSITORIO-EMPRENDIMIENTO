@@ -9,7 +9,6 @@
   <!-- PASO 1 · La página solo importa el módulo del componente.
        Ábrela con Live Server: los módulos no cargan con file:// -->
   <script type="module" src="./componentes/tarjeta-producto.js"></script>
-  <script type="module" src="./componentes/tarjeta-estefano.js"></script>
 </head>
 <body>
   <!-- Cambia el título por el nombre de tu emprendimiento -->
@@ -17,85 +16,26 @@
 
   <!-- PASO 4 · Usa la tarjeta tres veces con productos REALES de tu emprendimiento:
        cambia la foto, el nombre, la descripción y el precio de cada una. -->
-  <main class="producto">
+  <main class="catalogo">
 
-   <section>
-    <h2>Productos de Pastelería</h2>
+    <tarjeta-producto precio="0">
+      <img slot="foto" src="./img/producto-1.svg" alt="Describe la foto del producto 1">
+      <h3 slot="nombre">Producto 1</h3>
+      <p>Descripción corta del producto 1</p>
+    </tarjeta-producto>
 
-    <div class="productos">
+    <tarjeta-producto precio="0">
+      <img slot="foto" src="./img/producto-2.svg" alt="Describe la foto del producto 2">
+      <h3 slot="nombre">Producto 2</h3>
+      <p>Descripción corta del producto 2</p>
+    </tarjeta-producto>
 
-        <tarjeta-producto precio="25">
-            <img
-                slot="foto"
-                src="./img/pastel-cumpleanos.jpg"
-                alt="Pastel de cumpleaños">
+    <tarjeta-producto precio="0">
+      <img slot="foto" src="./img/producto-3.svg" alt="Describe la foto del producto 3">
+      <h3 slot="nombre">Producto 3</h3>
+      <p>Descripción corta del producto 3</p>
+    </tarjeta-producto>
 
-            <h3 slot="nombre">
-                Pastel de Cumpleaños
-            </h3>
-
-            <p>
-                Pastel personalizado para cumpleaños,
-                disponible en diferentes sabores y decoraciones.
-            </p>
-        </tarjeta-producto>
-
-
-        <tarjeta-producto precio="22">
-            <img
-                slot="foto"
-                src="./img/pastel-chocolate.jpg"
-                alt="Pastel de chocolate">
-
-            <h3 slot="nombre">
-                Pastel de Chocolate
-            </h3>
-
-            <p>
-                Pastel de chocolate con crema,
-                cobertura artesanal y decoración especial.
-            </p>
-        </tarjeta-producto>
-
-
-        <tarjeta-producto precio="28">
-            <img
-                slot="foto"
-                src="./img/pastel-frutos-rojos.jpg"
-                alt="Pastel de frutos rojos">
-
-            <h3 slot="nombre">
-                Pastel de Frutos Rojos
-            </h3>
-
-            <p>
-                Pastel suave acompañado de crema
-                y una selección de frutos rojos.
-            </p>
-        </tarjeta-producto>
-
-    </div>
-</section>
-<section>
-  <h2>Ventas de Pastelería</h2>
-  <div class="productos">
-    <tarjeta-estefano precio="3.50" cantidad="2">
-      <img slot="foto" src="./img/estefano-tres-leches.jpg" alt="Torta tres leches">
-      <h3 slot="nombre">Torta tres leches</h3>
-      <p>Porción individual, bien húmeda.</p>
-    </tarjeta-estefano>
-    <tarjeta-estefano precio="1.75" cantidad="4">
-      <img slot="foto" src="./img/estefano-brownie.jpg" alt="Brownie con nueces">
-      <h3 slot="nombre">Brownie con nueces</h3>
-      <p>Recién horneado.</p>
-    </tarjeta-estefano>
-    <tarjeta-estefano precio="4" cantidad="1">
-      <img slot="foto" src="./img/estefano-cheesecake.jpg" alt="Cheesecake de mora">
-      <h3 slot="nombre">Cheesecake de mora</h3>
-      <p>Con salsa de mora casera.</p>
-    </tarjeta-estefano>
-  </div>
-</section>
   </main>
 </body>
 </html>
