@@ -21,7 +21,7 @@ plantilla.innerHTML = `
        - un lugar donde se vea el precio (por ejemplo un <span id="precio">) -->
 `;
 
-export class TarjetaProducto extends HTMLElement {
+export class TarjetaPromocion extends HTMLElement {
 
   // PASO 3 · Indica qué atributos observa el componente.
   static get observedAttributes() {
@@ -54,5 +54,4 @@ export class TarjetaProducto extends HTMLElement {
   }
 }
 
-// ───────── PASO 1 · Registra el componente ─────────
-// Escribe aquí customElements.define(...) con una etiqueta que tenga guion.
+customElements.define("tarjeta-promocion", TarjetaPromocion);
