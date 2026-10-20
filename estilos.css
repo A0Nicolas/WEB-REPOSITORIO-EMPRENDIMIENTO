@@ -21,6 +21,10 @@ tarjeta-producto {
     --color-marca: #6f4e37;
 }
 
+tarjeta-estefano {
+    --color-marca: #b5446e;
+}
+
 .productos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
