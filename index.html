@@ -3,35 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Práctica de laboratorio · tarjeta-producto</title>
+  <title>Pastelería - SweetFruits</title>
   <link rel="stylesheet" href="./estilos.css">
   <script type="module" src="./componentes/tarjeta-promocion.js"></script>
 </head>
 <body>
-  <!-- Cambia el título por el nombre de tu emprendimiento -->
   <h1>Pastelería - SweetFruits</h1>
 
-  <!-- PASO 4 · Usa la tarjeta tres veces con productos REALES de tu emprendimiento:
-       cambia la foto, el nombre, la descripción y el precio de cada una. -->
+  <!-- PASO 4 · Tres productos REALES de SweetFruits con precio y descuento -->
   <main class="catalogo">
 
-    <tarjeta-producto precio="0">
-      <img slot="foto" src="./img/producto-1.svg" alt="Describe la foto del producto 1">
-      <h3 slot="nombre">Producto 1</h3>
-      <p>Descripción corta del producto 1</p>
-    </tarjeta-producto>
+    <tarjeta-promocion precio="18.50" descuento="15" destacado>
+      <img slot="foto" src="./img/leonel-brazog.jpg" alt="Brazo gitano">
+      <h3 slot="nombre">Pastel de fresa</h3>
+      <p>Delicioso brazo gitano con relleno de crema pastelera y cubierta de mermelada de fresa.</p>
+    </tarjeta-promocion>
 
-    <tarjeta-producto precio="0">
-      <img slot="foto" src="./img/producto-2.svg" alt="Describe la foto del producto 2">
-      <h3 slot="nombre">Producto 2</h3>
-      <p>Descripción corta del producto 2</p>
-    </tarjeta-producto>
+    <tarjeta-promocion precio="12.00" descuento="10">
+      <img slot="foto" src="./img/leonel-torta-cafe.jpg" alt="Torta de cafe">
+      <h3 slot="nombre">Torta de cafe</h3>
+      <p>Deliciosa torta de café con crema de capuchino.</p>
+    </tarjeta-promocion>
 
-    <tarjeta-producto precio="0">
-      <img slot="foto" src="./img/producto-3.svg" alt="Describe la foto del producto 3">
-      <h3 slot="nombre">Producto 3</h3>
-      <p>Descripción corta del producto 3</p>
-    </tarjeta-producto>
+    <tarjeta-promocion precio="15.75" descuento="0">
+      <img slot="foto" src="./img/leonel-torta-naranja.jpg" alt="Torta de naranja">
+      <h3 slot="nombre">Torta de naranja</h3>
+      <p>Delicada torta de naranja con crema de limón y cubierta de merengue.</p>
+    </tarjeta-promocion>
 
   </main>
 </body>

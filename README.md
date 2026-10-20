@@ -46,9 +46,9 @@ Programación Integrativa de Componentes Web · Unidad 1: Web Components
 
 | # | Producto | Precio |
 |---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
+| 1 | Cheesecake de Fresa | $18.50 (15% desc.) |
+| 2 | Tarta de Arándanos | $12.00 (10% desc.) |
+| 3 | Mousse de Mango | $15.75 (0% desc.) |
 
 ### Paso 5 · Repositorio del equipo
 

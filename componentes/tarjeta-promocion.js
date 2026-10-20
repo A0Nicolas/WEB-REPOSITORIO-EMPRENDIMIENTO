@@ -29,12 +29,12 @@ plantilla.innerHTML = `
       color: var(--color-marca, gray);
     }
 
-    .info-descuento {
+    .extra {
       color: #555;
     }
 
-    .precio-final {
-      font-size: 1.3rem;
+    .precio {
+      font-size: 22px;
       font-weight: bold;
       color: var(--color-marca, gray);
     }
@@ -43,8 +43,8 @@ plantilla.innerHTML = `
   <slot name="foto"></slot>
   <slot name="nombre"></slot>
   <slot>Sin descripción</slot>
-<p class="extra">Descuento: <span id="descuento">0</span>%</p>
-<p class="precio">\$<span id="valor">0</span></p>
+  <p class="extra">Descuento: <span id="descuento">0</span>%</p>
+  <p class="precio">$<span id="valor">0</span></p>
 `;
 
 export class TarjetaPromocion extends HTMLElement {
@@ -89,15 +89,15 @@ export class TarjetaPromocion extends HTMLElement {
 
   // Método interno: aplica la fórmula y actualiza los <span> del Shadow DOM.
   mostrar() {
-    const spanPrecio = this.shadowRoot?.getElementById("precio");
-    if (!spanPrecio) return;           // la plantilla aún no se clonó
+    const spanValor = this.shadowRoot?.getElementById("valor");
+    if (!spanValor) return;           // la plantilla aún no se clonó
 
     const spanDescuento = this.shadowRoot.getElementById("descuento");
     if (spanDescuento) spanDescuento.textContent = this.descuento;
 
     // Fórmula: precio × (1 − descuento / 100)
     const final = this.precio * (1 - this.descuento / 100);
-    spanPrecio.textContent = final.toFixed(2);
+    spanValor.textContent = final.toFixed(2);
   }
 }
 
