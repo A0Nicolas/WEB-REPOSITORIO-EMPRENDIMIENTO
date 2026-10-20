@@ -1,7 +1,3 @@
-// componentes/tarjeta-producto.js
-// Práctica de laboratorio · Construye <tarjeta-producto> (Actividad 8 de las diapositivas)
-// Completa cada PASO. Los números son los mismos de la diapositiva y de la tarea en Moodle.
-
 // ───────── PASO 2 · Plantilla con Shadow DOM y slots ─────────
 // Una sola plantilla, declarada fuera de la clase.
 const plantilla = document.createElement("template");
@@ -14,11 +10,10 @@ plantilla.innerHTML = `
        RETO EXTRA · :host([destacado]) que cambie el borde */
   </style>
 
-  <!-- PASO 2 · Escribe aquí:
-       - un slot con nombre "foto"
-       - un slot con nombre "nombre"
-       - un slot sin nombre, con un texto de respaldo
-       - un lugar donde se vea el precio (por ejemplo un <span id="precio">) -->
+  <slot name="foto"></slot>
+  <slot name="nombre"></slot>
+  <slot>Sin descripción</slot>
+  <p>Precio: $<span id="precio">0</span></p>
 `;
 
 export class TarjetaPromocion extends HTMLElement {
@@ -31,11 +26,12 @@ export class TarjetaPromocion extends HTMLElement {
   constructor() {
     super();
     // PASO 2 · Crea el Shadow DOM en modo "open".
-    // Recuerda: aquí no se leen atributos ni se dibuja HTML.
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
     // PASO 2 · Agrega al Shadow DOM una COPIA de la plantilla con cloneNode(true).
+    this.shadowRoot.appendChild(plantilla.content.cloneNode(true));
     // PASO 3 · Muestra el precio inicial.
   }
 
