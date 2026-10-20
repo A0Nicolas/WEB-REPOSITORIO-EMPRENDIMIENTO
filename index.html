@@ -9,6 +9,7 @@
   <!-- PASO 1 · La página solo importa el módulo del componente.
        Ábrela con Live Server: los módulos no cargan con file:// -->
   <script type="module" src="./componentes/tarjeta-producto.js"></script>
+  <script type="module" src="./componentes/tarjeta-estefano.js"></script>
 </head>
 <body>
   <!-- Cambia el título por el nombre de tu emprendimiento -->
@@ -74,6 +75,26 @@
         </tarjeta-producto>
 
     </div>
+</section>
+<section>
+  <h2>Ventas de Pastelería</h2>
+  <div class="productos">
+    <tarjeta-estefano precio="3.50" cantidad="2">
+      <img slot="foto" src="img/estefano1.svg" alt="Torta tres leches">
+      <h3 slot="nombre">Torta tres leches</h3>
+      <p>Porción individual, bien húmeda.</p>
+    </tarjeta-estefano>
+    <tarjeta-estefano precio="1.75" cantidad="4">
+      <img slot="foto" src="img/estefano2.svg" alt="Brownie con nueces">
+      <h3 slot="nombre">Brownie con nueces</h3>
+      <p>Recién horneado.</p>
+    </tarjeta-estefano>
+    <tarjeta-estefano precio="4" cantidad="1">
+      <img slot="foto" src="img/estefano3.svg" alt="Cheesecake de mora">
+      <h3 slot="nombre">Cheesecake de mora</h3>
+      <p>Con salsa de mora casera.</p>
+    </tarjeta-estefano>
+  </div>
 </section>
   </main>
 </body>
