@@ -5,30 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pastelería - SweetFruits</title>
   <link rel="stylesheet" href="./estilos.css">
+
+  <!-- Módulos del equipo -->
+  <script type="module" src="./componentes/tarjeta-producto.js"></script>
+  <script type="module" src="./componentes/tarjeta-servicio.js"></script>
+  <script type="module" src="./componentes/tarjeta-estefano.js"></script>
   <script type="module" src="./componentes/tarjeta-promocion.js"></script>
 </head>
 <body>
-  <h1>Pastelería - SweetFruits</h1>
-  
-  <main class="catalogo">
+  <h1>Miss Pastelitos</h1>
 
-    <tarjeta-promocion precio="18.50" descuento="15" destacado>
-      <img slot="foto" src="./img/leonel-brazog.jpg" alt="Brazo gitano">
-      <h3 slot="nombre">Pastel de fresa</h3>
-      <p>Delicioso brazo gitano con relleno de crema pastelera y cubierta de mermelada de fresa.</p>
-    </tarjeta-promocion>
+  <main class="producto">
 
-    <tarjeta-promocion precio="12.00" descuento="10">
-      <img slot="foto" src="./img/leonel-torta-cafe.jpg" alt="Torta de cafe">
-      <h3 slot="nombre">Torta de cafe</h3>
-      <p>Deliciosa torta de café con crema de capuchino.</p>
-    </tarjeta-promocion>
+    <!-- Sección Nicolas -->
+    <section>
+      <h2>Productos de Pastelería</h2>
+      <div class="productos">
+        <tarjeta-producto precio="25">
+            <img slot="foto" src="./img/pastel-cumpleanos.jpg" alt="Pastel de cumpleaños">
+            <h3 slot="nombre">Pastel de Cumpleaños</h3>
+            <p>Pastel personalizado para cumpleaños, disponible en diferentes sabores y decoraciones.</p>
+        </tarjeta-producto>
+        <tarjeta-producto precio="22">
+            <img slot="foto" src="./img/pastel-chocolate.jpg" alt="Pastel de chocolate">
+            <h3 slot="nombre">Pastel de Chocolate</h3>
+            <p>Pastel de chocolate con crema, cobertura artesanal y decoración especial.</p>
+        </tarjeta-producto>
+        <tarjeta-producto precio="28">
+            <img slot="foto" src="./img/pastel-frutos-rojos.jpg" alt="Pastel de frutos rojos">
+            <h3 slot="nombre">Pastel de Frutos Rojos</h3>
+            <p>Pastel suave acompañado de crema y una selección de frutos rojos.</p>
+        </tarjeta-producto>
+      </div>
+    </section>
 
-    <tarjeta-promocion precio="15.75" descuento="0">
-      <img slot="foto" src="./img/leonel-torta-naranja.jpg" alt="Torta de naranja">
-      <h3 slot="nombre">Torta de naranja</h3>
-      <p>Delicada torta de naranja con crema de limón y cubierta de merengue.</p>
-    </tarjeta-promocion>
+    <!-- Sección Sol -->
+    <section>
+      <h2>Servicios de Cafetería</h2>
+      <div class="productos">
+        <tarjeta-servicio precio="20" duracion="90">
+            <img slot="foto" src="img/Taller_Barista.webp" alt="Taller de barista">
+            <h3 slot="nombre">Taller de barista</h3>
+            <p>Aprende a preparar espresso y capuchino.</p>
+        </tarjeta-servicio>
+        <tarjeta-servicio precio="45" duracion="120">
+            <img slot="foto" src="img/Catering_Oficinas.webp" alt="Catering para oficinas">
+            <h3 slot="nombre">Catering para oficinas</h3>
+            <p>Café y bocaditos para tu reunión.</p>
+        </tarjeta-servicio>
+        <tarjeta-servicio precio="15" duracion="60">
+            <img slot="foto" src="img/Arte_Latte.webp" alt="Clase de latte art">
+            <h3 slot="nombre">Clase de latte art</h3>
+            <p>Dibujos en la espuma, paso a paso.</p>
+        </tarjeta-servicio>
+      </div>
+    </section>
+
+    <!-- Sección Estéfano -->
+    <section>
+      <h2>Ventas de Pastelería</h2>
+      <div class="productos">
+        <tarjeta-estefano precio="3.50" cantidad="2">
+          <img slot="foto" src="./img/estefano-tres-leches.jpg" alt="Torta tres leches">
+          <h3 slot="nombre">Torta tres leches</h3>
+          <p>Porción individual, bien húmeda.</p>
+        </tarjeta-estefano>
+        <tarjeta-estefano precio="1.75" cantidad="4">
+          <img slot="foto" src="./img/estefano-brownie.jpg" alt="Brownie con nueces">
+          <h3 slot="nombre">Brownie con nueces</h3>
+          <p>Recién horneado.</p>
+        </tarjeta-estefano>
+        <tarjeta-estefano precio="4" cantidad="1">
+          <img slot="foto" src="./img/estefano-cheesecake.jpg" alt="Cheesecake de mora">
+          <h3 slot="nombre">Cheesecake de mora</h3>
+          <p>Con salsa de mora casera.</p>
+        </tarjeta-estefano>
+      </div>
+    </section>
+
+    <!-- Sección Leonel -->
+    <section>
+      <h2>Promociones de Pastelería</h2>
+      <div class="productos">
+        <tarjeta-promocion precio="18.50" descuento="15" destacado>
+          <img slot="foto" src="img/leonel-brazog.jpg" alt="Pastel de fresa">
+          <h3 slot="nombre">Pastel de fresa</h3>
+          <p>Delicioso brazo gitano con relleno de crema pastelera y cubierta de mermelada de fresa.</p>
+        </tarjeta-promocion>
+        <tarjeta-promocion precio="12.00" descuento="10">
+          <img slot="foto" src="img/leonel-torta-cafe.jpg" alt="Torta de café">
+          <h3 slot="nombre">Torta de cafe</h3>
+          <p>Deliciosa torta de café con crema de capuchino.</p>
+        </tarjeta-promocion>
+        <tarjeta-promocion precio="15.75" descuento="0">
+          <img slot="foto" src="img/leonel-torta-naranja.jpg" alt="Torta de naranja">
+          <h3 slot="nombre">Torta de naranja</h3>
+          <p>Delicada torta de naranja con crema de limón y cubierta de merengue.</p>
+        </tarjeta-promocion>
+      </div>
+    </section>
 
   </main>
 </body>
