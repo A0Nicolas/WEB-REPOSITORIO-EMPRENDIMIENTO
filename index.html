@@ -10,6 +10,8 @@
        Ábrela con Live Server: los módulos no cargan con file:// -->
   <script type="module" src="./componentes/tarjeta-producto.js"></script>
   <script type="module" src="./componentes/tarjeta-servicio.js"></script>
+  <script type="module" src="./componentes/tarjeta-estefano.js"></script>
+  
 </head>
 <body>
   <!-- Cambia el título por el nombre de tu emprendimiento -->
@@ -57,7 +59,7 @@
             </p>
         </tarjeta-producto>
 
-
+    
         <tarjeta-producto precio="28">
             <img
                 slot="foto"
@@ -75,9 +77,6 @@
         </tarjeta-producto>
     </div>
 </section>
-  </main>
-
-
 <section>
     <h2>Servicios de Cafetería</h2>
     <div class="productos">
@@ -101,5 +100,31 @@
     </div>
    </section>
   </main>
+</body>
+</html>
+
+<section>
+  <h2>Ventas de Pastelería</h2>
+  <div class="productos">
+    <tarjeta-estefano precio="3.50" cantidad="2">
+      <img slot="foto" src="./img/estefano-tres-leches.jpg" alt="Torta tres leches">
+      <h3 slot="nombre">Torta tres leches</h3>
+      <p>Porción individual, bien húmeda.</p>
+    </tarjeta-estefano>
+    <tarjeta-estefano precio="1.75" cantidad="4">
+      <img slot="foto" src="./img/estefano-brownie.jpg" alt="Brownie con nueces">
+      <h3 slot="nombre">Brownie con nueces</h3>
+      <p>Recién horneado.</p>
+    </tarjeta-estefano>
+    <tarjeta-estefano precio="4" cantidad="1">
+      <img slot="foto" src="./img/estefano-cheesecake.jpg" alt="Cheesecake de mora">
+      <h3 slot="nombre">Cheesecake de mora</h3>
+      <p>Con salsa de mora casera.</p>
+    </tarjeta-estefano>
+  </div>
+</section>
+  </main>
+
+
 </body>
 </html>
