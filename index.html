@@ -9,11 +9,13 @@
   <!-- PASO 1 · La página solo importa el módulo del componente.
        Ábrela con Live Server: los módulos no cargan con file:// -->
   <script type="module" src="./componentes/tarjeta-producto.js"></script>
+  <script type="module" src="./componentes/tarjeta-servicio.js"></script>
   <script type="module" src="./componentes/tarjeta-estefano.js"></script>
+  
 </head>
 <body>
   <!-- Cambia el título por el nombre de tu emprendimiento -->
-  <h1>Nombre de tu emprendimiento</h1>
+  <h1>Miss Pastelitos </h1>
 
   <!-- PASO 4 · Usa la tarjeta tres veces con productos REALES de tu emprendimiento:
        cambia la foto, el nombre, la descripción y el precio de cada una. -->
@@ -57,7 +59,7 @@
             </p>
         </tarjeta-producto>
 
-
+    
         <tarjeta-producto precio="28">
             <img
                 slot="foto"
@@ -73,9 +75,34 @@
                 y una selección de frutos rojos.
             </p>
         </tarjeta-producto>
-
     </div>
 </section>
+<section>
+    <h2>Servicios de Cafetería</h2>
+    <div class="productos">
+        <tarjeta-servicio precio="20" duracion="90">
+            <img slot="foto" src="img/Taller_Barista.webp" alt="Taller de barista">
+            <h3 slot="nombre">Taller de barista</h3>
+            <p>Aprende a preparar espresso y capuchino.</p>
+        </tarjeta-servicio>
+
+        <tarjeta-servicio precio="45" duracion="120">
+            <img slot="foto" src="img/Catering_Oficinas.webp" alt="Catering para oficinas">
+            <h3 slot="nombre">Catering para oficinas</h3>
+            <p>Café y bocaditos para tu reunión.</p>
+        </tarjeta-servicio>
+
+        <tarjeta-servicio precio="15" duracion="60">
+            <img slot="foto" src="img/Arte_Latte.webp" alt="Clase de latte art">
+            <h3 slot="nombre">Clase de latte art</h3>
+            <p>Dibujos en la espuma, paso a paso.</p>
+        </tarjeta-servicio>
+    </div>
+   </section>
+  </main>
+</body>
+</html>
+
 <section>
   <h2>Ventas de Pastelería</h2>
   <div class="productos">
@@ -97,5 +124,7 @@
   </div>
 </section>
   </main>
+
+
 </body>
 </html>

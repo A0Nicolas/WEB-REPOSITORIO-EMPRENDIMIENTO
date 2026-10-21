@@ -5,7 +5,7 @@ Programación Integrativa de Componentes Web · Unidad 1: Web Components
 | Dato | Completa |
 |---|---|
 | Emprendimiento | |
-| Estudiantes (Apellido Nombre) | |
+| Estudiantes Villegas Solnage | |
 | NRC | 36642 |
 | Fecha | |
 | Enlace del repositorio | |
