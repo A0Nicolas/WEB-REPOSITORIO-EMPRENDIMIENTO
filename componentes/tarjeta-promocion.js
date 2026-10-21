@@ -4,48 +4,100 @@ const plantilla = document.createElement("template");
 plantilla.innerHTML = `
   <style>
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
       border: 2px solid var(--color-marca, gray);
-      border-radius: 10px;
-      padding: 1rem;
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
       text-align: center;
       background: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    :host(:hover) {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     :host([destacado]) {
       border-color: gold;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
 
+    :host([destacado]:hover) {
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 1 · Imagen uniforme: misma anchura y altura fija */
     ::slotted(img) {
-      max-width: 100%;
-      height: 150px;
+      width: 100%;
+      height: 180px;
       object-fit: cover;
-      border-radius: 8px;
+      display: block;
+    }
+
+    .contenido {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
     }
 
     ::slotted(h3) {
-      margin: 0.5rem 0;
+      margin: 0.3rem 0;
       color: var(--color-marca, gray);
+      font-size: 1.1rem;
     }
 
-    .extra {
-      color: #555;
+    /* 2 · Párrafo alineado a la izquierda */
+    ::slotted(p) {
+      text-align: left;
+      margin: 0;
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    /* 3 · Estilo especial para el descuento (badge / pill) */
+    .descuento-badge {
+      display: inline-block;
+      align-self: center;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-top: 0.3rem;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+    }
+
+    .descuento-badge.sin-descuento {
+      background: #f5f5f5;
+      color: #999;
+      border-color: #ddd;
     }
 
     .precio {
-      font-size: 22px;
-      font-weight: bold;
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--color-marca, gray);
+      margin: 0.5rem 0 0.3rem;
     }
   </style>
 
   <slot name="foto"></slot>
-  <slot name="nombre"></slot>
-  <slot>Sin descripción</slot>
-  <p class="extra">Descuento: <span id="descuento">0</span>%</p>
-  <p class="precio">$<span id="valor">0</span></p>
+  <div class="contenido">
+    <slot name="nombre"></slot>
+    <slot>Sin descripción</slot>
+    <span class="descuento-badge" id="descuento-badge">Descuento: <span id="descuento">0</span>%</span>
+    <p class="precio">$<span id="valor">0</span></p>
+  </div>
 `;
+
 
 export class TarjetaPromocion extends HTMLElement {
 
@@ -94,6 +146,10 @@ export class TarjetaPromocion extends HTMLElement {
 
     const spanDescuento = this.shadowRoot.getElementById("descuento");
     if (spanDescuento) spanDescuento.textContent = this.descuento;
+
+    // Alterna la clase del badge según si hay descuento o no
+    const badge = this.shadowRoot.getElementById("descuento-badge");
+    if (badge) badge.classList.toggle("sin-descuento", this.descuento === 0);
 
     // Fórmula: precio × (1 − descuento / 100)
     const final = this.precio * (1 - this.descuento / 100);
