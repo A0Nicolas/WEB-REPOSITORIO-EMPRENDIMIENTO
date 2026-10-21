@@ -11,6 +11,7 @@
   <script type="module" src="./componentes/tarjeta-producto.js"></script>
   <script type="module" src="./componentes/tarjeta-servicio.js"></script>
   <script type="module" src="./componentes/tarjeta-estefano.js"></script>
+  <script type="module" src="./componentes/tarjeta-promocion.js"></script>
   
 </head>
 <body>
@@ -123,7 +124,28 @@
     </tarjeta-estefano>
   </div>
 </section>
-  </main>
+<section>
+   <h2>Promociones de Pastelería</h2>
+   <div class="productos">
+     <tarjeta-promocion precio="18.50" descuento="15" destacado>
+       <img slot="foto" src="img/leonel-brazog.jpg" alt="Pastel de fresa">
+       <h3 slot="nombre">Pastel de fresa</h3>
+       <p>Delicioso brazo gitano con relleno de crema pastelera.</p>
+     </tarjeta-promocion>
+     <tarjeta-promocion precio="12.00" descuento="10">
+       <img slot="foto" src="img/leonel-torta-cafe.jpg" alt="Torta de café">
+       <h3 slot="nombre">Torta de cafe</h3>
+       <p>Deliciosa torta de café con crema de capuchino.</p>
+     </tarjeta-promocion>
+     <tarjeta-promocion precio="15.75" descuento="25">
+       <img slot="foto" src="img/leonel-torta-naranja.jpg" alt="Torta de naranja">
+       <h3 slot="nombre">Torta de naranja</h3>
+       <p>Delicada torta de naranja con crema de limón.</p>
+     </tarjeta-promocion>
+   </div>
+ </section>
+
+</main>
 
 
 </body>
