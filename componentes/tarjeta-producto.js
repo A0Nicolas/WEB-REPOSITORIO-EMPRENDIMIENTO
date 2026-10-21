@@ -1,58 +1,101 @@
-// componentes/tarjeta-producto.js
-// Práctica de laboratorio · Construye <tarjeta-producto> (Actividad 8 de las diapositivas)
-// Completa cada PASO. Los números son los mismos de la diapositiva y de la tarea en Moodle.
-
-// ───────── PASO 2 · Plantilla con Shadow DOM y slots ─────────
-// Una sola plantilla, declarada fuera de la clase.
 const plantilla = document.createElement("template");
-plantilla.innerHTML = `
-  <style>
-    /* PASO 3 · Escribe aquí los estilos del componente:
-       - :host con display y un borde
-       - el color de marca leído con var(--color-marca, un-color-de-respaldo)
-       - ::slotted(...) para la foto y el nombre que llegan de la página
-       RETO EXTRA · :host([destacado]) que cambie el borde */
-  </style>
 
-  <!-- PASO 2 · Escribe aquí:
-       - un slot con nombre "foto"
-       - un slot con nombre "nombre"
-       - un slot sin nombre, con un texto de respaldo
-       - un lugar donde se vea el precio (por ejemplo un <span id="precio">) -->
+plantilla.innerHTML = `
+    <style>
+        :host {
+            display: block;
+            background: #f5ead7;
+            border: 2px solid var(--color-marca, #6f4e37);
+            border-radius: 12px;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .foto ::slotted(img) {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cuerpo {
+            padding: 14px;
+        }
+
+        ::slotted(h3) {
+            margin: 0 0 8px 0;
+            color: var(--color-marca, #6f4e37);
+        }
+
+        ::slotted(p) {
+            color: #4b3428;
+        }
+
+        .precio {
+            margin-top: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--color-marca, #6f4e37);
+        }
+    </style>
+
+    <div class="foto">
+        <slot name="foto"></slot>
+    </div>
+
+    <div class="cuerpo">
+        <slot name="nombre"></slot>
+
+        <slot>Sin descripción</slot>
+
+        <p class="precio">
+            $<span id="valor">0.00</span>
+        </p>
+    </div>
 `;
 
 export class TarjetaProducto extends HTMLElement {
 
-  // PASO 3 · Indica qué atributos observa el componente.
-  static get observedAttributes() {
-    return [];
-  }
+    static get observedAttributes() {
+        return ["precio"];
+    }
 
-  constructor() {
-    super();
-    // PASO 2 · Crea el Shadow DOM en modo "open".
-    // Recuerda: aquí no se leen atributos ni se dibuja HTML.
-  }
+    constructor() {
+        super();
 
-  connectedCallback() {
-    // PASO 2 · Agrega al Shadow DOM una COPIA de la plantilla con cloneNode(true).
-    // PASO 3 · Muestra el precio inicial.
-  }
+        this.attachShadow({ mode: "open" });
+    }
 
-  attributeChangedCallback(nombre, anterior, valor) {
-    // PASO 3 · Cuando cambie "precio", actualiza lo que se ve en pantalla.
-    // Ojo: si el atributo ya viene escrito en el HTML, este método se ejecuta
-    // ANTES que connectedCallback; comprueba que la plantilla ya esté clonada.
-  }
+    connectedCallback() {
+        this.shadowRoot.append(
+            plantilla.content.cloneNode(true)
+        );
 
-  // PASO 3 · La propiedad lee y escribe el atributo, así quedan sincronizados.
-  get precio() {
-    return 0;
-  }
+        this.mostrar();
+    }
 
-  set precio(valor) {
-  }
+    attributeChangedCallback(nombre, viejo, nuevo) {
+        this.mostrar();
+    }
+
+    get precio() {
+        return Number(this.getAttribute("precio"));
+    }
+
+    set precio(valor) {
+        this.setAttribute("precio", valor);
+    }
+
+    mostrar() {
+        const valor = this.shadowRoot.getElementById("valor");
+
+        if (!valor) return;
+
+        valor.textContent = this.precio.toFixed(2);
+    }
 }
 
-// ───────── PASO 1 · Registra el componente ─────────
-// Escribe aquí customElements.define(...) con una etiqueta que tenga guion.
+customElements.define(
+    "tarjeta-producto",
+    TarjetaProducto
+);
