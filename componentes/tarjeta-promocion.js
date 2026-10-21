@@ -60,32 +60,75 @@ plantilla.innerHTML = `
       line-height: 1.4;
     }
 
-    /* 3 · Estilo especial para el descuento (badge / pill) */
+    /* 3 · Estilo llamativo para el descuento */
     .descuento-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       align-self: center;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-top: 0.3rem;
-      background: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #a5d6a7;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      background: linear-gradient(135deg, #ff5252, #ff7043);
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(255, 82, 82, 0.35);
+      animation: pulso 2s ease-in-out infinite;
+    }
+
+    @keyframes pulso {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.04); }
+    }
+
+    .descuento-badge .icono {
+      font-size: 1rem;
     }
 
     .descuento-badge.sin-descuento {
-      background: #f5f5f5;
-      color: #999;
-      border-color: #ddd;
+      background: #e0e0e0;
+      color: #888;
+      box-shadow: none;
+      animation: none;
     }
 
-    .precio {
-      font-size: 1.5rem;
+    /* Zona de precios */
+    .precios {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .precio-original {
+      font-size: 1rem;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .precio-final {
+      font-size: 1.6rem;
       font-weight: 800;
       color: var(--color-marca, gray);
-      margin: 0.5rem 0 0.3rem;
+    }
+
+    .ahorro {
+      font-size: 0.75rem;
+      color: #2e7d32;
+      font-weight: 600;
+      background: #e8f5e9;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .ahorro.oculto,
+    .precio-original.oculto {
+      display: none;
     }
   </style>
 
@@ -93,8 +136,12 @@ plantilla.innerHTML = `
   <div class="contenido">
     <slot name="nombre"></slot>
     <slot>Sin descripción</slot>
-    <span class="descuento-badge" id="descuento-badge">Descuento: <span id="descuento">0</span>%</span>
-    <p class="precio">$<span id="valor">0</span></p>
+    <span class="descuento-badge" id="descuento-badge"><span class="icono">🏷️</span> <span id="descuento">0</span>% OFF</span>
+    <div class="precios">
+      <span class="precio-original oculto" id="precio-original">$0</span>
+      <span class="precio-final">$<span id="valor">0</span></span>
+      <span class="ahorro oculto" id="ahorro">Ahorras $0</span>
+    </div>
   </div>
 `;
 
@@ -149,11 +196,26 @@ export class TarjetaPromocion extends HTMLElement {
 
     // Alterna la clase del badge según si hay descuento o no
     const badge = this.shadowRoot.getElementById("descuento-badge");
-    if (badge) badge.classList.toggle("sin-descuento", this.descuento === 0);
+    const hayDescuento = this.descuento > 0;
+    if (badge) badge.classList.toggle("sin-descuento", !hayDescuento);
 
     // Fórmula: precio × (1 − descuento / 100)
     const final = this.precio * (1 - this.descuento / 100);
     spanValor.textContent = final.toFixed(2);
+
+    // Precio original tachado y ahorro
+    const spanOriginal = this.shadowRoot.getElementById("precio-original");
+    const spanAhorro   = this.shadowRoot.getElementById("ahorro");
+
+    if (spanOriginal) {
+      spanOriginal.textContent = `$${this.precio.toFixed(2)}`;
+      spanOriginal.classList.toggle("oculto", !hayDescuento);
+    }
+    if (spanAhorro) {
+      const ahorro = this.precio - final;
+      spanAhorro.textContent = `Ahorras $${ahorro.toFixed(2)}`;
+      spanAhorro.classList.toggle("oculto", !hayDescuento);
+    }
   }
 }
 
